@@ -150,4 +150,109 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 
 $(document).ready(function() {
   // Do your stuff here
+  //task 1
+  $('#main-heading').text('person');
+  $('#text-label1').text('gender');
+  $('#text-label2').text('name');
+  $('#text-label3').text('address');
+  $('#number-label').text('age');
+  $('#checkbox-label1').text('longhair');
+  $('#checkbox-label2').text('single');
+  $('#color-label').text('eyecolor');
+
+  //task 2
+  $('#text-input1').val('female');
+  $('#text-input2').val('viola');
+  $('#text-input3').val('chestnut st');
+  $('#numeric-input').val('23');
+  $('#cbox-input1').prop('checked',true);
+  $('#cbox-input2').prop('checked',true);
+  $('#color-input').val('#5d4c52');
+
+
+//task3
+var person={
+  gender:$('#text-input1').val(),
+  name:$('#text-input2').val(),
+  address: $('#text-input3').val(),
+  age: $('#numeric-input').val(),
+  hair:$('#cbox-input1').prop('checked'),
+  marriage:$('#cbox-input2').prop('checked'),
+  eyecolor: $('#color-input').val()
+};
+console.log(person);
+
+//task4
+$('#text-input1').prop('disabled',false);
+$('#text-input2').prop('disabled',false);
+$('#text-input3').prop('disabled',false);
+$('#numeric-input').prop('disabled',false);
+$('#cbox-input1').prop('disabled',false);
+$('#cbox-input2').prop('disabled',false);
+$('#color-input').prop('disabled',false);
+
+
+//task 5
+$('button').click(function(){
+  var person={
+    gender:$('#text-input1').val(),
+    name:$('#text-input2').val(),
+    address: $('#text-input3').val(),
+    age: $('#numeric-input').val(),
+    hair:$('#cbox-input1').prop('checked'),
+    marriage:$('#cbox-input2').prop('checked'),
+    eyecolor: $('#color-input').val()
+  };
+  console.log(person);
+});
+
+//task 6
+$('#text-label1').text('description');
+$('#text-label2').text('lat');
+$('#text-label3').text('long');
+$('#text-input2').attr('type', "number");
+$('#text-input3').attr('type', "number");
+$('#color-label').text('color');
+$('button').click(function(){
+  L.circleMarker([$('#text-input2').val(),$('#text-input3').val()], {color:$('color-input').val()}).bindPopup($('#text-input1').val()).addTo(map);
+});
+
+//task 8
+$('button').click(function(){
+  L.marker([$('#text-input2').val(),$('#text-input3').val()], {icon: myIcon}).bindPopup($('#text-input1').val()).addTo(map);
+
+});
+
+var myIcon = L.divIcon({className: 'leaflet-marker-icon'});
+
+//task 9
+var obj = {
+  description: 'female location',
+  lat: '39.954568',
+  long: '-75.195137',
+};
+
+var matchobj=function(obj){
+  $('#text-input1').val(obj.description);
+  $('#text-input2').val(obj.lat);
+  $('#text-input3').val(obj.long);
+
+  var obj2= {
+    description: obj.description,
+    lat: obj.lat,
+    long: obj.long,
+  };
+  console.log(obj2);
+  console.log(_.isEqual(obj, obj2));
+  $('button').click(function(){
+    L.marker([$('#text-input2').val(),$('#text-input3').val()], {icon: myIcon}).bindPopup($('#text-input1').val()).addTo(map);
+
+  });
+
+};
+
+matchobj(obj);
+
+
+
 });
